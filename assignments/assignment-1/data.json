@@ -1,0 +1,86 @@
+{
+    "january": {
+        "food": 300,
+        "rent": 1000,
+        "entertainment": 200,
+        "transportation": 200,
+        "utilities": 194
+    },
+    "february": {
+        "food": 350,
+        "rent": 1050,
+        "entertainment": 180,
+        "transportation": 210,
+        "utilities": 116
+    },
+    "march": {
+        "food": 320,
+        "rent": 1000,
+        "entertainment": 220,
+        "transportation": 180,
+        "utilities": 117
+    },
+    "april": {
+        "food": 280,
+        "rent": 900,
+        "entertainment": 190,
+        "transportation": 220,
+        "utilities": 101
+    },
+    "may": {
+        "food": 290,
+        "rent": 950,
+        "entertainment": 210,
+        "transportation": 180,
+        "utilities": 121
+    },
+    "june": {
+        "food": 320,
+        "rent": 980,
+        "entertainment": 180,
+        "transportation": 200,
+        "utilities": 167
+    },
+    "july": {
+        "food": 310,
+        "rent": 1050,
+        "entertainment": 220,
+        "transportation": 190,
+        "utilities": 135
+    },
+    "august": {
+        "food": 330,
+        "rent": 1000,
+        "entertainment": 210,
+        "transportation": 180,
+        "utilities": 94
+    },
+    "september": {
+        "food": 290,
+        "rent": 970,
+        "entertainment": 190,
+        "transportation": 230,
+        "utilities": 181
+    },
+    "october": {
+        "food": 280,
+        "rent": 950,
+        "entertainment": 180,
+        "transportation": 200,
+        "utilities": 86
+    },
+    "november": {
+        "food": 300,
+        "rent": 1000,
+        "entertainment": 200,
+        "transportation": 250,
+        "utilities": 153
+    },
+    "december": {
+        "food": 320,
+        "rent": 980,
+        "entertainment": 210,
+        "transportation": 230,
+        "utilities": 171
+    }
+}
