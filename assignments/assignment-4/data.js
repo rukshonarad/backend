@@ -45,8 +45,8 @@ export const stories = {
             }
         ]
     },
-    "f2fc9e73-0bbf-460b-9638-9db21d4a9e5f": {
-        id: "f2fc9e73-0bbf-460b-9638-9db21d4a9e5f",
+    "f2fc9e73-0bbf-460b-9638-9db21d4a9e3k": {
+        id: "f2fc9e73-0bbf-460b-9638-9db21d4a9e3k",
         name: "1984",
         genre: "Classic Fiction",
         author: "George Orwell",
