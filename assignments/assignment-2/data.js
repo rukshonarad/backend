@@ -8,12 +8,10 @@ const data = ids.reduce((people, id) => {
         name: faker.person.fullName(),
         profession: faker.person.jobTitle(),
         avatar: faker.image.avatarGitHub(),
-        about: faker.lorem.text(),
+        about: faker.lorem.text()
     };
 
     return { ...people, [id]: person };
 }, {});
 
-module.exports = {
-    data,
-};
+module.exports = { data };
