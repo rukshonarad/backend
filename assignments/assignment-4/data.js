@@ -44,5 +44,28 @@ export const stories = {
                 rating: 5
             }
         ]
+    },
+    "f2fc9e73-0bbf-460b-9638-9db21d4a9e5f": {
+        id: "f2fc9e73-0bbf-460b-9638-9db21d4a9e5f",
+        name: "1984",
+        genre: "Classic Fiction",
+        author: "George Orwell",
+        tasks: [
+            {
+                id: "df42bd67-ed38-421c-ab1a-ff16cf54d808",
+                text: "Some text",
+                rating: 4
+            },
+            {
+                id: "58fd18c8-d78d-4ebc-8758-d6536421b52d",
+                text: "Some text1",
+                rating: 5
+            },
+            {
+                id: "043ed035-429d-48a8-8ed9-1e8a1b6ebe66",
+                text: "Some text2",
+                rating: 5
+            }
+        ]
     }
 };

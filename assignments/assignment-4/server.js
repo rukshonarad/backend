@@ -51,6 +51,23 @@ app.get("./stories/:storyId/tasks"),
             data: stories[storyId].tasks
         });
     };
+// Get task by id
+
+app.get("/stories/:storyId/tasks/:taskId", (req, res) => {
+    const { storyId, taskId } = req.params;
+
+    if (!validate(storyId) || !stories[storyId]) {
+        return res.status(400).json({ message: "Not a valid story ID" });
+    }
+
+    const subTasks = stories[storyId].tasks.find((task) => task.id === taskId);
+
+    if (!subTasks) {
+        return res.status(404).json({ message: "Task not found" });
+    }
+
+    res.json(subTasks);
+});
 
 //Create new subtask
 app.post("./stories/:storyId/tasks"),
