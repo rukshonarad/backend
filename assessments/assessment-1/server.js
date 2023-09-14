@@ -1,12 +1,17 @@
 const http = require("http");
-const { v4: uuid } = require("uuid");
+const { v4: uuid, validate } = require("uuid");
+const fs = require("fs");
 
-const port = 3030;
+const port = 3070;
 const host = "localhost";
 const newId = uuid();
 // {
 //     applications = {};
 // }
+const handleErrors = (res, message = "Something went wrong from our side") => {
+    res.writeHead(500, { "Content-Type": "text/plain" });
+    res.end(message);
+};
 const parseId = (path, level) => {
     const parts = path.split("/");
     return parts[level];
@@ -21,45 +26,123 @@ const verifyPathMatch = (path, pattern) => {
     );
 };
 const getAllApplications = (res) => {
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify(applications));
+    // Code to return all job applications
+
+    fs.readFile("job-applications.json", "utf-8", (err, data) => {
+        if (err) {
+            handleErrors(res);
+        }
+
+        const parsedData = JSON.parse(data);
+
+        res.writeHead(200, { "content-type": "application/json" });
+        res.end(JSON.stringify(parsedData));
+    });
 };
 
 const createApplication = (req, res) => {
-    let body = [];
-    req.on("data", (chunk) => {
-        body.push(chunk);
-    });
-    req.on("end", () => {
-        body = JSON.parse(Buffer.concat(body));
-        const newApplication = {
-            id: newId,
-            companyName: body.companyName,
-            recruiterName: body.recruiterName,
-            position: body.position,
-            appliedDate: body.appliedDate,
-            applicationStatus: body.applicationStatus
-        };
-        applications[newId] = newApplication;
+    fs.readFile("job-applications.json", "utf-8", (err, data) => {
+        if (err) {
+            ç;
+            handleErrors(res);
+        }
 
-        res.writeHead(201, { "content-type": "application/json" });
-        res.end(JSON.stringify(newApplication));
+        const parsedApplicationData = JSON.parse(data);
+
+        let body = [];
+        req.on("data", (chunk) => {
+            body.push(chunk);
+        });
+        req.on("end", () => {
+            body = JSON.parse(Buffer.concat(body));
+            const newJobApplication = {
+                id: newId,
+                companyName: body.companyName,
+                recruiterName: body.recruiterName,
+                position: body.position,
+                appliedDate: body.appliedDate,
+                status: body.status
+            };
+            parsedApplicationData[newId] = newJobApplication;
+
+            fs.writeFile(
+                "job-applications.json",
+                JSON.stringify(parsedApplicationData),
+                (err) => {
+                    if (err) {
+                        handleErrors(res);
+                    }
+                    res.writeHead(201, { "content-type": "application/json" });
+                    res.end(JSON.stringify(newJobApplication));
+                }
+            );
+        });
     });
 };
 
 const getApplication = (req, res) => {
-    const id = parseId(req.url, 2);
-    const application = applications[id];
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify(application));
+    fs.readFile("job-applications.json", "utf-8", (err, data) => {
+        if (err) {
+            handleErrors(res);
+        }
+
+        const parsedApplicationData = JSON.parse(data);
+
+        const id = parseId(req.url, 2);
+        const application = parsedApplicationData[id];
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(application));
+    });
 };
 
 const updateApplicationStatus = (req, res) => {
-    // Code to update a job application's status
+    fs.readFile("job-applications.json", "utf-8", (err, data) => {
+        if (err) {
+            handleErrors(res);
+        }
+
+        const parsedApplicationData = JSON.parse(data);
+
+        let body = [];
+        req.on("data", (chunk) => {
+            body.push(chunk);
+        });
+        req.on("end", () => {
+            body = JSON.parse(Buffer.concat(body));
+            const id = parseId(req.url, 2);
+
+            parsedApplicationData[id].status = body.status;
+
+            fs.writeFile(
+                "job-applications.json",
+                JSON.stringify(parsedApplicationData),
+                (err) => {
+                    if (err) {
+                        handleErrors(res);
+                    }
+
+                    res.statusCode = 204;
+                    res.end();
+                }
+            );
+        });
+    });
 };
 
 const deleteApplication = (req, res) => {
-    // Code to delete a job application
+    fs.readFile("job-applications.json", "utf-8", (err, data) => {
+        if (err) {
+            handleErrors(res);
+        }
+
+        const parsedApplicationData = JSON.parse(data);
+
+        const id = parseId(req.url, 2);
+        delete parsedApplicationData[id];
+        res.statusCode = 200;
+        res.end();
+    });
 };
 const server = http.createServer((req, res) => {
     const isPathMatch = verifyPathMatch(req.url); //
