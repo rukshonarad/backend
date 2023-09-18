@@ -6,25 +6,28 @@ import {
     orderController
 } from "../controllers/comany.controller.js";
 
-const companyRouter = Router();
+const customerRouter = Router();
+const productRouter = Router();
+const orderRouter = Router();
 
-companyRouter.get("/", customerController.getAllCustomers);
-companyRouter.get("/:customersId", customerController.getCustomerById);
-companyRouter.put("/", customerController.createCustomer);
-companyRouter.put("/:customersId", customerController.updateCustomerById);
-companyRouter.delete("/:customersId", customerController.deleteCustomerById);
+customerRouter.get("/", customerController.getAllCustomers);
+customerRouter.post("/", customerController.createCustomer);
+customerRouter.get("/:customerId", customerController.getCustomerById);
+customerRouter.put("/:customerId", customerController.updateCustomer);
+customerRouter.delete("/:customerId", customerController.deleteCustomer);
 
-/// Product
-companyRouter.get("/", productController.getAllProduct);
-companyRouter.get("/:productId", productController.getProductById);
-companyRouter.put("/", productController.createProduct);
-companyRouter.put("/:productId", productController.updateProductById);
-companyRouter.delete("/:productId", productController.deleteProductById);
+productRouter.get("/", productController.getAllProducts);
+productRouter.post("/", productController.createProduct);
+productRouter.get("/:productId", productController.getProductById);
+productRouter.put("/:productId", productController.updateProduct);
+productRouter.delete("/:productId", productController.deleteProduct);
 
-//Order
-companyRouter.get("/", orderController.getAllOrder);
-companyRouter.get("/:productId", orderController.getOrderById);
-companyRouter.put("/", orderController.createOrder);
-companyRouter.put("/:productId", orderController.updateOrderById);
-companyRouter.delete("/:productId", orderController.deleteOrderById);
-export { companyRouter };
+orderRouter.get("/", orderController.getAllOrders);
+orderRouter.post("/", orderController.createOrder);
+orderRouter.get("/:orderId", orderController.getOrderById);
+orderRouter.put("/:orderId", orderController.updateOrder);
+orderRouter.delete("/:orderId", orderController.deleteOrder);
+
+export { customerRouter };
+export { productRouter };
+export { orderRouter };

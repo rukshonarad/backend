@@ -1,12 +1,17 @@
 import { customers, products, orders } from "../data.js";
-import { validate, v4 as uuid } from "uuid";
+import { v4 as uuid, validate } from "uuid";
 
-class CustomersController {
+const API_KEY = "jkdfbgjh765478326578%%%***@@@@bsdhfbdhjbbhvbdsfjhgc";
+
+class CustomerController {
+    // GET all customers.
     getAllCustomers = (req, res) => {
-        const customerList = Object.values(customers);
-        res.status(200).json({ data: customerList });
+        res.status(200).json({
+            data: customers
+        });
     };
 
+    // GET a single customer by ID.
     getCustomerById = (req, res) => {
         const customerId = req.params.customerId;
 
@@ -17,20 +22,20 @@ class CustomersController {
         res.status(200).json({ data: customers[customerId] });
     };
 
+    // Create a new customer
     createCustomer = (req, res) => {
         const data = req.body;
-        const id = uuid;
-
+        const id = uuid();
         const customer = {
             id,
             ...data
         };
         customers[id] = customer;
-
         res.status(201).json({ data: customer });
     };
 
-    updateCustomerById = (req, res) => {
+    // Update the details of a customer by id
+    updateCustomer = (req, res) => {
         const customerId = req.params.customerId;
         const updatedData = req.body;
 
@@ -38,105 +43,98 @@ class CustomersController {
             return res.status(400).json({ message: "Not a valid customer ID" });
         }
 
-        customers[customerId] = { ...customerId[customerId], updatedData };
-
+        customers[customerId] = { ...customers[customerId], ...updatedData };
         res.status(200).json({ data: customers[customerId] });
     };
 
-    deleteCustomerById = (req, res) => {
+    // Delete a customer by Id
+    deleteCustomer = (req, res) => {
         const customerId = req.params.customerId;
 
         if (!validate(customerId) || !customers[customerId]) {
             return res.status(400).json({ message: "Not a valid customer ID" });
         }
-
         delete customers[customerId];
         res.status(204).send();
     };
 }
 
-// Products Endpoint
-class ProductsController {
-    getAllProduct = (res) => {
-        let products = Object.values(products);
-
-        res.status(200).json(products);
+class ProductController {
+    // Get all products.
+    getAllProducts = (req, res) => {
+        res.status(200).json({
+            data: products
+        });
     };
 
+    // Get a product by id.
     getProductById = (req, res) => {
-        const productsId = req.params.productsId;
-
-        if (!validate(productsId) || !products[productsId]) {
+        const productId = req.params.productId;
+        if (!validate(productId) || !products[productId]) {
             return res.status(400).json({ message: "Not a valid product ID" });
         }
 
-        res.status(200).json({ data: products[productsId] });
+        res.status(200).json({ data: products[productId] });
     };
 
-    creataProduct = (req, res) => {
+    // Create a new product
+    createProduct = (req, res) => {
         const data = req.body;
-        const id = uuid;
-
+        const id = uuid();
         const product = {
             id,
             ...data
         };
-
         products[id] = product;
-
         res.status(201).json({ data: product });
     };
 
-    updateProductById = (req, res) => {
-        const productsId = req.params.productsId;
+    // Update the information about a specific product.
+    updateProduct = (req, res) => {
+        const productId = req.params.productId;
         const updatedData = req.body;
 
-        if (!validate(productsId) || !products[productsId]) {
+        if (!validate(productId) || !products[productId]) {
             return res.status(400).json({ message: "Not a valid product ID" });
         }
 
-        products[productsId] = {
-            ...products[productsId],
-            updatedData
-        };
-
-        res.status(200).json({ data: products[productsId] });
+        products[productId] = { ...products[productId], ...updatedData };
+        res.status(200).json({ data: products[productId] });
     };
 
-    deleteProductById = (req, res) => {
-        const productsId = req.params.productsId;
+    // Delete a product
+    deleteProduct = (req, res) => {
+        const productId = req.params.productId;
 
-        if (!validate(productsId) || !products[productsId]) {
+        if (!validate(productId) || !products[productId]) {
             return res.status(400).json({ message: "Not a valid product ID" });
         }
-
-        delete products[productsId];
-
+        delete products[productId];
         res.status(204).send();
     };
 }
 
-// Orders Endpoint
-class OrdersController {
-    getAllOrder = (res) => {
-        let orders = Object.values(orders);
-
-        res.status(200).json({ data: orders });
+class OrderController {
+    // GET all orders.
+    getAllOrders = (req, res) => {
+        res.status(200).json({
+            data: orders
+        });
     };
 
+    // Get a order by id.
     getOrderById = (req, res) => {
-        const ordersId = req.params.ordersId;
-
-        if (!validate(ordersId) || !orders[ordersId]) {
-            return res.status(400).json({ message: "Not a valid order ID" });
+        const orderId = req.params.orderId;
+        if (!validate(orderId) || !orders[orderId]) {
+            return res.status(400).json({ message: "Not a valid product ID" });
         }
 
-        res.status(200).json({ data: orders[ordersId] });
+        res.status(200).json({ data: orders[orderId] });
     };
 
+    // Create a new order
     createOrder = (req, res) => {
         const { customerId, productIds } = req.body;
-
         if (
             !validate(customerId) ||
             !customers[customerId] ||
@@ -147,50 +145,45 @@ class OrdersController {
         ) {
             return res
                 .status(400)
-                .json({ message: "Invalid customerId or productIds" });
+                .json({ message: "Not a valid customerId or productIds" });
         }
 
-        const id = uuid;
-
+        const id = uuid();
         const order = {
             id,
             customerId,
             productIds
         };
-
         orders[id] = order;
 
         res.status(201).json({ data: order });
     };
 
-    updateOrderById = (req, res) => {
-        const ordersId = req.params.ordersId;
+    // Update the information about a specific order.
+    updateOrder = (req, res) => {
+        const orderId = req.params.orderId;
         const updatedData = req.body;
 
-        if (!validate(ordersId) || !order[ordersId]) {
+        if (!validate(orderId) || !orders[orderId]) {
             return res.status(400).json({ message: "Not a valid order ID" });
         }
 
-        orders[ordersId] = {
-            ...orders[ordersId],
-            updatedData
-        };
-
-        res.status(200).json({ data: orders[ordersId] });
+        orders[orderId] = { ...orders[orderId], ...updatedData };
+        res.status(200).json({ data: orders[orderId] });
     };
 
-    deleteOrderById = (req, res) => {
-        const ordersId = req.params.ordersId;
+    // Delete a order
+    deleteOrder = (req, res) => {
+        const orderId = req.params.orderId;
 
-        if (!validate(ordersId) || !orders[ordersId]) {
+        if (!validate(orderId) || !orders[orderId]) {
             return res.status(400).json({ message: "Not a valid order ID" });
         }
-
-        delete orders[ordersId];
+        delete orders[orderId];
         res.status(204).send();
     };
 }
 
-export const customerController = new CustomersController();
-export const productController = new ProductsController();
-export const orderController = new OrdersController();
+export const customerController = new CustomerController();
+export const productController = new ProductController();
+export const orderController = new OrderController();

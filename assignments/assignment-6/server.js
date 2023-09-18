@@ -8,7 +8,7 @@ import {
 const app = express();
 app.use(express.json());
 
-const PORT = 5070;
+const PORT = 4000;
 
 app.use("/customers", customerRouter);
 app.use("/products", productRouter);
