@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 export const cars = {
     "550e8400-e29b-41d4-a716-446655440000": {
         id: "550e8400-e29b-41d4-a716-446655440000",
@@ -58,4 +57,4 @@ export const maintenance = {
     }
     // More maintenance records can be added here
 };
-export const hi = "Hi";
+const hi = "Hi";

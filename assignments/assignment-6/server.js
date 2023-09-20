@@ -1,18 +1,16 @@
 import express from "express";
-import {
-    customerRouter,
-    productRouter,
-    orderRouter
-} from "./routes/company.route.js";
+import { carRouter } from "./routes/car.routes.js";
+import { maintenanceRouter } from "./routes/maintenance.route.js";
+import { rentalRouter } from "./routes/rentals.route.js";
 
 const app = express();
 app.use(express.json());
 
-const PORT = 4000;
+const PORT = 4040;
 
-app.use("/customers", customerRouter);
-app.use("/products", productRouter);
-app.use("/orders", orderRouter);
+app.use("/cars", carRouter);
+app.use("/maintenances", maintenanceRouter);
+app.use("/rentals", rentalRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
