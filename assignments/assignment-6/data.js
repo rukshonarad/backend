@@ -1,4 +1,4 @@
-export const cars = {
+const cars = {
     "550e8400-e29b-41d4-a716-446655440000": {
         id: "550e8400-e29b-41d4-a716-446655440000",
         make: "Toyota",
@@ -22,7 +22,7 @@ export const cars = {
     // More cars can be added here
 };
 
-export const rentals = {
+const rentals = {
     "9a35b597-e32f-43f9-80cc-1911ebecb7e2": {
         id: "9a35b597-e32f-43f9-80cc-1911ebecb7e2",
         carId: "550e8400-e29b-41d4-a716-446655440000", // Reference to a car
@@ -38,7 +38,7 @@ export const rentals = {
     // More rentals can be added here
 };
 
-export const maintenance = {
+const maintenances = {
     "c2308f38-1c3a-4c6a-9f49-0c6d74f7820e": {
         id: "c2308f38-1c3a-4c6a-9f49-0c6d74f7820e",
         carId: "550e8400-e29b-41d4-a716-446655440000", // Reference to a car
@@ -57,4 +57,3 @@ export const maintenance = {
     }
     // More maintenance records can be added here
 };
-const hi = "Hi";

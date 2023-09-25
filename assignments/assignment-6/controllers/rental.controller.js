@@ -1,6 +1,6 @@
 import { rentalService } from "../services/rental.service.js";
-import { sanitizedObj } from "../utils/sanitize.js";
-import { RENTAL_FIELDS } from "../const/allowed.js";
+import { sanitizedObj } from "../utils/sanitizeObj.js";
+import { RENTAL_FIELDS } from "../const/allowedFields.js";
 
 class RentalController {
     getAllRentals = (req, res) => {

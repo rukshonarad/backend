@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { maintenanceController } from "../controllers/maintenance.controller.js";
 
-import { ValidationMiddleware } from "../validation/validation.middleware.js";
+import { ValidationMiddleware } from "../middlewares/validation.middleware.js";
 
 const maintenanceRouter = Router();
 

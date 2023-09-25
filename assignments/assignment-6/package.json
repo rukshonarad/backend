@@ -1,18 +1,18 @@
 {
+    "name": "car-rental-fleet-management-system",
+    "version": "1.0.0",
+    "description": "Dealership management system",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "author": "Rukhshona",
+    "license": "ISC",
     "dependencies": {
         "express": "^4.18.2",
         "nodemon": "^3.0.1",
         "uuid": "^9.0.1"
     },
-    "type": "module",
-    "scripts": {
-        "start": "node server.js"
-    },
-    "name": "assignment-6",
-    "version": "1.0.0",
-    "main": "server.js",
-    "devDependencies": {},
-    "author": "Ruxi",
-    "license": "ISC",
-    "description": ""
+    "type": "module"
 }

@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { rentalController } from "../controllers/rental.controller.js";
 
-import { ValidationMiddleware } from "../validation/validation.middleware.js";
+import { ValidationMiddleware } from "../middlewares/validation.middleware.js";
 
 const rentalRouter = Router();
 

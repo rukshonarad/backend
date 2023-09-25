@@ -1,6 +1,6 @@
-import { maintenanceService } from "../services/maintenance.service.js";
-import { sanitizedObj } from "../utils/sanitize.js";
-import { MAINTENANCE_FIELDS } from "../const/allowed.js";
+import { maintenanceService } from "../services/rental.service.js";
+import { sanitizedObj } from "../utils/sanitizeObj.js";
+import { MAINTENANCE_FIELDS } from "../const/allowedFields.js";
 
 class MaintenanceController {
     getAllMaintenances = (req, res) => {

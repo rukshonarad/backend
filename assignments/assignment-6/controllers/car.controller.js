@@ -1,6 +1,6 @@
 import { carService } from "../services/car.service.js";
-import { sanitizedObj } from "../utils/sanitize.js";
-import { CAR_FIELDS } from "../const/allowed.js";
+import { sanitizedObj } from "../utils/sanitizeObj.js";
+import { CAR_FIELDS } from "../const/allowedFields.js";
 
 class CarController {
     getAllCars = (req, res) => {
