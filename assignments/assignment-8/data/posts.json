@@ -1,0 +1,27 @@
+{
+    "posts": {
+        "id": {
+            "title": "Understanding JavaScript",
+            "content": "JavaScript is a high-level, object-oriented programming language...",
+            "authorId": "authorUuid1",
+            "tagIds": ["tagUuid1", "tagUuid2"],
+            "createdDate": "09/22/2023"
+        },
+        "a7012e50-02d7-4a97-89dc-cfbb69878989": {
+            "id": "a7012e50-02d7-4a97-89dc-cfbb69878989",
+            "title": "Understanding MonoDb",
+            "content": "Best day",
+            "authorId": "authorUuid1",
+            "tagIds": ["tagUuid1", "tagUuid2"],
+            "createdDate": "09/23/2023"
+        },
+        "7caa7052-df9d-4cc1-b783-2ce41786ebac": {
+            "id": "7caa7052-df9d-4cc1-b783-2ce41786ebac",
+            "title": "Understanding MonoDb",
+            "content": "MongoDb is Data base",
+            "authorId": "authorUuid1",
+            "tagIds": ["tagUuid1", "tagUuid2"],
+            "createdDate": "09/23/2023"
+        }
+    }
+}
