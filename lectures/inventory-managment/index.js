@@ -4,7 +4,7 @@ import { prisma } from "./src/prisma/index.js";
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT || 9060;
+const PORT = process.env.PORT || 3040;
 
 app.post("/products", async (req, res) => {
     const { body } = req;
