@@ -4,6 +4,11 @@
             "id": "tagUuid1",
             "name": "JavaScript",
             "description": "Posts related to JavaScript programming language."
+        },
+        "3aa07951-e338-4980-a006-c1aacfdb66b4": {
+            "id": "3aa07951-e338-4980-a006-c1aacfdb66b4",
+            "name": "JavaScript",
+            "description": "Posts related to JavaScript programming language."
         }
     }
 }

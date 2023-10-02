@@ -4,7 +4,7 @@ import { promises as fs } from "fs";
 class TagService {
     async readFile() {
         try {
-            const tagsObj = await fs.readFile("tags.json", "utf-8");
+            const tagsObj = await fs.readFile("./data/tags.json", "utf-8");
             const parsedData = JSON.parse(tagsObj);
             return parsedData.tags;
         } catch (error) {
@@ -14,7 +14,7 @@ class TagService {
     async writefile(data) {
         try {
             const result = await fs.writeFile(
-                "tags.json",
+                "./data/tags.json",
                 JSON.stringify({ tags: data })
             );
             return result;
