@@ -142,3 +142,38 @@ console.log(convertToObjArr(["a", "b", "c"]));
 //   acc.value = ele;
 //   return acc;
 // }, {})
+
+// Given an number of  array. Linear array.
+// [1,2,4,5,6,7,8] => 3
+// [1,2,3,....., 67,68,70.....100] => 69.
+// Numbers are are always positive.
+const findMissingNumber = (num) => {
+    let count = 0;
+    for (let i = 1; i <= num.length; i++) {
+        if (!num.includes(i)) {
+            count = i;
+        }
+    }
+    return count;
+};
+console.log(findMissingNumber([1, 2, 3, 4, 5, 6, 7]));
+console.log(findMissingNumber([1, 2, 3, 4, 5, 6, 7, 9, 10]));
+console.log(findMissingNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13]));
+
+// Given a number. Sum up the digits
+// 1234 => 10
+// 4589 => 26
+// 8978 => 32.
+// COndition : Do not convert number to string and loop.
+
+const sumUpTheDigits = (num) => {
+    let sum = 0;
+    while (num > 0) {
+        sum += num % 10;
+        num = Math.floor(num / 10);
+    }
+
+    return sum;
+};
+
+console.log(sumUpTheDigits(1234));
